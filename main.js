@@ -494,7 +494,7 @@ function formatVideoTime(seconds) {
 }
 
 async function getChannelImage(videoId) {
-    let API_KEY = "PUT_YOUR_NEW_API_KEY_HERE";
+    let API_KEY = CONFIG.API_KEY;
 
     try {
         let videoResponse = await fetch(

@@ -1,3 +1,4 @@
 ﻿*.zip
 *.rar
 .vscode/
+config.js
