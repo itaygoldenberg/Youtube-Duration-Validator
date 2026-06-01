@@ -1,0 +1,1596 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap');
+
+:root {
+  --bg-base: #0a0a0f;
+  --bg-deep: #050508;
+  --glass: rgba(255, 255, 255, 0.045);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-top: rgba(255, 255, 255, 0.18);
+  --accent: rgb(255, 50, 60);
+  --text: rgba(245, 245, 250, 0.95);
+  --text-mute: rgba(200, 200, 215, 0.55);
+  --text-faint: rgba(180, 180, 200, 0.32);
+  --shadow-deep: 0 40px 100px rgba(0,0,0,0.8), 0 12px 32px rgba(0,0,0,0.5);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255,50,60,0.15), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(120,30,200,0.16), transparent 35%),
+    #050508;
+
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 9rem 1.5rem 5rem;
+  gap: 3rem;
+
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '▶ TUNEFLOW';
+  position: fixed;
+  top: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #ff4b5c;
+  text-shadow: 0 0 30px rgba(255,50,60,0.35);
+}
+
+body::after {
+  content: 'your sound, your flow';
+  position: fixed;
+  top: 4.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.35);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  font-style: italic;
+}
+
+form {
+  width: 100%;
+  max-width: 520px;
+
+  background: rgba(255,255,255,0.03);
+
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 24px;
+
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  box-shadow: var(--shadow-deep);
+}
+
+input[type="text"],
+input[type="url"] {
+  width: 100%;
+
+  padding: 0.95rem 1rem;
+
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 12px;
+
+  color: white;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: rgba(255,50,60,0.45);
+  box-shadow: 0 0 20px rgba(255,50,60,0.15);
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+form button {
+  border: none;
+
+  padding: 1rem;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, rgba(255,50,60,0.35), rgba(200,40,100,0.22));
+
+  color: white;
+
+  letter-spacing: 0.2em;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.35s;
+}
+
+form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255,50,60,0.25);
+}
+
+thead {
+  display: none;
+}
+
+table {
+  width: 100%;
+  max-width: 1150px;
+}
+
+tbody {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+tbody tr {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(35px);
+
+  box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+
+  transition: 0.4s;
+
+  --video-progress: 42%;
+}
+
+tbody tr:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,50,60,0.35);
+  box-shadow:
+    0 20px 55px rgba(0,0,0,0.6),
+    0 0 35px rgba(255,50,60,0.15);
+}
+
+tbody tr::before {
+  content: '';
+
+  position: absolute;
+
+  top: 180px;
+  left: 0;
+
+  height: 4px;
+
+  width: var(--video-progress, 42%);
+
+  background: linear-gradient(90deg, #ff3250, #ff6b7a);
+
+  z-index: 20;
+
+  box-shadow: 0 0 14px rgba(255,50,60,0.7);
+
+  transition: width 0.25s linear;
+}
+
+td {
+  border: none;
+  display: block;
+}
+
+td:first-child {
+  position: relative;
+
+  height: 220px;
+
+  overflow: hidden;
+
+  padding: 0 !important;
+
+  display: flex;
+  align-items: flex-end;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: white;
+
+  padding-left: 1rem !important;
+  padding-bottom: 1rem !important;
+
+  isolation: isolate;
+}
+
+td:first-child::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.85), transparent 55%);
+
+  z-index: -1;
+}
+
+td:first-child::after {
+  content: '▶';
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 74px;
+  height: 74px;
+
+  border-radius: 50%;
+
+  background: rgba(255,50,60,0.78);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 1.5rem;
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.35s;
+
+  box-shadow:
+    0 0 30px rgba(255,50,60,0.45);
+
+  z-index: 30;
+}
+
+tbody tr:hover td:first-child::after {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+td:first-child iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+td:first-child:has(iframe)::after,
+td:first-child:has(iframe)::before {
+  display: none;
+}
+
+td:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 1rem;
+
+  color: rgba(255,255,255,0.7);
+
+  font-size: 0.9rem;
+}
+
+td:nth-child(2) img {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid rgba(255,255,255,0.1);
+
+  box-shadow: 0 0 12px rgba(255,50,60,0.2);
+}
+
+td:nth-child(3) {
+  position: absolute;
+
+  top: 188px;
+  right: 0.8rem;
+
+  z-index: 25;
+
+  background: rgba(0,0,0,0.82);
+
+  color: white;
+
+  font-size: 0.72rem;
+
+  padding: 0.3rem 0.55rem;
+
+  border-radius: 6px;
+
+  font-family: 'JetBrains Mono', monospace;
+}
+
+td:nth-child(4) {
+  padding: 0 1rem 1rem;
+}
+
+td:nth-child(4) a {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.9rem;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  text-decoration: none;
+
+  color: #ff7a88;
+
+  transition: 0.3s;
+}
+
+td:nth-child(4) a:hover {
+  border-color: rgba(255,50,60,0.35);
+
+  background: rgba(255,50,60,0.08);
+}
+
+td:nth-child(4) span {
+  margin-top: 0.8rem;
+
+  width: 100%;
+
+  display: block;
+
+  padding: 0.85rem;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.035);
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  color: rgba(255,255,255,0.35);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 0.72rem;
+}
+
+td:nth-child(5) {
+  padding: 0 1rem 1.2rem;
+}
+
+td button {
+  width: 100%;
+
+  padding: 0.9rem;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.03);
+
+  color: rgba(255,255,255,0.7);
+
+  letter-spacing: 0.15em;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+td button:hover {
+  background: rgba(255,50,60,0.12);
+
+  border-color: rgba(255,50,60,0.3);
+
+  color: white;
+}
+
+p {
+  padding: 0.8rem 1.5rem;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(255,50,60,0.15);
+
+  color: rgba(255,120,135,0.8);
+
+  font-size: 0.72rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  box-shadow: 0 0 25px rgba(255,50,60,0.06);
+}
+
+td:first-child div[id^="time-"] {
+  position: absolute;
+
+  right: 0.75rem;
+  bottom: 0.7rem;
+
+  z-index: 40;
+
+  padding: 0.28rem 0.55rem;
+
+  background: rgba(0,0,0,0.82);
+
+  color: white;
+
+  border-radius: 6px;
+
+  font-family: 'JetBrains Mono', monospace;
+
+  font-size: 0.72rem;
+}
+
+@media (max-width: 768px) {
+  tbody {
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    padding: 1.5rem;
+  }
+
+  body {
+    padding: 8rem 1rem 4rem;
+  }
+}
+
+
+td:first-child {
+  height: 220px !important;
+  padding: 0 !important;
+  display: block !important;
+  overflow: hidden;
+}
+
+td:first-child iframe,
+td:first-child div[id^="player-"],
+td:first-child div[id^="player-"] iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  border: none !important;
+}
+
+/* זמן הסרטון של YouTube card - יורד למטה ולא מתנגש */
+td:first-child div[id^="time-"] {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.75rem;
+  z-index: 60;
+
+  width: auto;
+
+  padding: 0.45rem 0.75rem;
+
+  border-radius: 12px;
+
+  background: rgba(5, 5, 8, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+
+  text-align: center;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* מסתיר את זמן השיר הרגיל בזמן שהסרטון פתוח */
+tbody tr:has(iframe) td:nth-child(3) {
+  display: none;
+}
+
+/* פס התקדמות מדויק לפי ה-JS */
+tbody tr::before {
+  top: 220px !important;
+  width: var(--video-progress, 0%) !important;
+  transition: width 0.25s linear;
+}
+
+/* כשהסרטון לא פעיל - שלא יהיה פס מוזר באמצע */
+tbody tr:not(:has(iframe))::before {
+  width: 42% !important;
+}
+
+/* כשהסרטון פעיל - הפס מתחיל מ-0 ומתקדם לפי הזמן האמיתי */
+tbody tr:has(iframe)::before {
+  width: var(--video-progress, 0%) !important;
+}
+
+
+/* ===== Channel Section Upgrade ===== */
+
+td:nth-child(2) {
+  display: flex;
+  align-items: center;
+
+  gap: 0.8rem;
+
+  padding: 1rem 1rem 0.9rem;
+
+  position: relative;
+}
+
+/* Channel image */
+td:nth-child(2) img {
+  width: 42px;
+  height: 42px;
+
+  min-width: 42px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 2px solid rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 0 18px rgba(255,50,60,0.18),
+    0 4px 12px rgba(0,0,0,0.35);
+
+  transition: 0.35s ease;
+}
+
+/* Hover effect */
+tbody tr:hover td:nth-child(2) img {
+  transform: scale(1.06);
+
+  border-color: rgba(255,90,110,0.45);
+
+  box-shadow:
+    0 0 24px rgba(255,50,60,0.28),
+    0 6px 16px rgba(0,0,0,0.45);
+}
+
+/* Artist name */
+td:nth-child(2) {
+  font-size: 0.92rem;
+
+  font-weight: 500;
+
+  color: rgba(255,255,255,0.82);
+
+  letter-spacing: -0.01em;
+}
+
+/* subtle separator glow */
+td:nth-child(2)::after {
+  content: '';
+
+  position: absolute;
+
+  left: 1rem;
+  right: 1rem;
+  bottom: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.08),
+      transparent
+    );
+}
+
+/* Hide floating timer over video */
+td:first-child div[id^="time-"] {
+  position: absolute !important;
+
+  top: auto !important;
+  bottom: -3.55rem !important;
+
+  right: 1rem !important;
+
+  width: fit-content !important;
+
+  padding: 0.2rem 0.5rem !important;
+
+  border-radius: 999px !important;
+
+  background: rgba(255,255,255,0.045) !important;
+
+  border: 1px solid rgba(255,255,255,0.08) !important;
+
+  color: rgba(255,255,255,0.62) !important;
+
+  font-size: 0.62rem !important;
+
+  font-family: 'JetBrains Mono', monospace;
+
+  backdrop-filter: blur(10px);
+
+  z-index: 100;
+}
+
+/* Space for timer beside creator */
+td:nth-child(2) {
+  position: relative;
+
+  padding-right: 6.5rem !important;
+
+  min-height: 68px;
+}
+
+/* Better creator layout */
+td:nth-child(2) img {
+  width: 40px !important;
+  height: 40px !important;
+
+  min-width: 40px !important;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+td:nth-child(2) {
+  font-size: 0.88rem !important;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+}
+
+
+td:nth-child(2) {
+  position: relative;
+}
+
+td:nth-child(2) span[id^="time-"] {
+  margin-left: auto;
+
+  padding: 0.25rem 0.55rem;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.09);
+
+  color: rgba(255,255,255,0.65);
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+/* PERFECT TITLE POSITIONING */
+td:first-child {
+  display: flex !important;
+
+  align-items: flex-end !important;
+
+  justify-content: flex-start !important;
+
+  padding: 0 0.9rem 0.8rem !important;
+
+  overflow: hidden;
+
+  font-size: 0.78rem !important;
+
+  font-weight: 600 !important;
+
+  line-height: 1.25 !important;
+
+  letter-spacing: -0.015em !important;
+
+  color: rgba(255,255,255,0.96);
+
+  text-shadow:
+    0 2px 14px rgba(0,0,0,0.95),
+    0 1px 3px rgba(0,0,0,0.85);
+
+  word-break: break-word;
+
+  white-space: normal !important;
+
+  text-align: left;
+
+  overflow-wrap: anywhere;
+}
+
+/* Better title area overlay */
+td:first-child::before {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.92) 0%,
+      rgba(0,0,0,0.55) 28%,
+      rgba(0,0,0,0.1) 55%,
+      transparent 100%
+    );
+
+  z-index: 0;
+}
+
+/* Keep title above overlay */
+td:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth cinematic hover */
+tbody tr:hover td:first-child {
+  transform: scale(1.01);
+}
+
+
+/* Video same exact size as thumbnail */
+td:first-child {
+  height: 260px !important;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* YouTube iframe exact fit */
+td:first-child iframe,
+td:first-child div[id^="player-"],
+td:first-child div[id^="player-"] iframe {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  border: none !important;
+
+  object-fit: cover;
+}
+
+/* Stronger song title */
+td:first-child {
+  font-size: 0.92rem !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.28 !important;
+
+  letter-spacing: -0.02em !important;
+
+  color: rgba(255,255,255,0.99) !important;
+
+  text-shadow:
+    0 3px 18px rgba(0,0,0,1),
+    0 2px 8px rgba(0,0,0,0.95),
+    0 1px 2px rgba(0,0,0,0.9);
+
+  z-index: 3;
+}
+
+/* Dark cinematic fade for readability */
+td:first-child::before {
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.96) 0%,
+      rgba(0,0,0,0.65) 32%,
+      rgba(0,0,0,0.15) 58%,
+      transparent 100%
+    ) !important;
+}
+
+/* Video same exact size as thumbnail */
+td:first-child {
+  height: 260px !important;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* YouTube iframe exact fit */
+td:first-child iframe,
+td:first-child div[id^="player-"],
+td:first-child div[id^="player-"] iframe {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  border: none !important;
+
+  object-fit: cover;
+}
+
+/* Stronger song title */
+td:first-child {
+  font-size: 0.92rem !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.28 !important;
+
+  letter-spacing: -0.02em !important;
+
+  color: rgba(255,255,255,0.99) !important;
+
+  text-shadow:
+    0 3px 18px rgba(0,0,0,1),
+    0 2px 8px rgba(0,0,0,0.95),
+    0 1px 2px rgba(0,0,0,0.9);
+
+  z-index: 3;
+}
+
+/* Dark cinematic fade for readability */
+td:first-child::before {
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.96) 0%,
+      rgba(0,0,0,0.65) 32%,
+      rgba(0,0,0,0.15) 58%,
+      transparent 100%
+    ) !important;
+}
+
+td:first-child {
+  align-items: flex-start !important;
+
+  padding-top: 1rem !important;
+}
+
+/* ===== Ambient animated background ===== */
+
+body::selection {
+  background: transparent;
+}
+
+body::before,
+body::after {
+  pointer-events: none;
+}
+
+/* floating ambient glow */
+body {
+  position: relative;
+}
+
+body::selection {
+  background: rgba(255,70,90,0.18);
+}
+
+body::after {
+  animation:
+    ambientFloat 14s ease-in-out infinite alternate;
+}
+
+@keyframes ambientFloat {
+  0% {
+    transform:
+      translateX(-50%)
+      translateY(0px);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(8px);
+    opacity: 0.75;
+  }
+}
+
+/* cinematic animated particles */
+body::marker {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+body > table::before {
+  content: '';
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,60,80,0.05) 0%, transparent 12%),
+    radial-gradient(circle at 70% 60%, rgba(120,60,255,0.04) 0%, transparent 14%),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,0.025) 0%, transparent 10%);
+
+  animation: particlesMove 18s linear infinite;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+@keyframes particlesMove {
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-40px);
+  }
+}
+
+/* subtle glow on cards */
+tbody tr {
+  position: relative;
+}
+
+tbody tr::after {
+  content: '';
+
+  position: absolute;
+
+  inset: -1px;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,60,80,0.12),
+      transparent 35%,
+      rgba(120,60,255,0.08)
+    );
+
+  opacity: 0;
+
+  transition: 0.45s ease;
+
+  pointer-events: none;
+}
+
+tbody tr:hover::after {
+  opacity: 1;
+}
+
+/* animated play button */
+td:first-child::after {
+  animation: playPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes playPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 rgba(255,50,60,0);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.06);
+    box-shadow: 0 0 28px rgba(255,50,60,0.32);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 0 rgba(255,50,60,0);
+  }
+}
+
+/* mini icon for URL */
+td:nth-child(4) span::before {
+  content: '🔗';
+
+  margin-right: 0.45rem;
+
+  opacity: 0.7;
+}
+
+/* mini icon for delete */
+td button::before {
+  content: '🗑';
+
+  margin-right: 0.4rem;
+
+  font-size: 0.72rem;
+}
+
+/* glow on stats */
+p {
+  box-shadow:
+    0 0 20px rgba(255,50,60,0.08),
+    0 4px 18px rgba(0,0,0,0.35);
+}
+
+/* softer hover */
+tbody tr:hover {
+  transform:
+    translateY(-4px)
+    scale(1.012);
+}
+
+/* ===== EXTRA BACKGROUND EFFECTS ===== */
+
+/* smooth animated background movement */
+body {
+  animation: ambientBackground 18s ease-in-out infinite alternate;
+}
+
+@keyframes ambientBackground {
+  0% {
+    background-position:
+      0% 0%,
+      100% 100%,
+      50% 100%,
+      50% 0%;
+  }
+
+  100% {
+    background-position:
+      6% 4%,
+      94% 96%,
+      48% 96%,
+      52% 2%;
+  }
+}
+
+/* floating cinematic particles */
+body::after {
+  animation:
+    brandPulse 4s ease-in-out infinite alternate,
+    floatingGlow 9s ease-in-out infinite alternate;
+}
+
+@keyframes floatingGlow {
+  0% {
+    transform:
+      translateX(-50%)
+      translateY(0px);
+  }
+
+  100% {
+    transform:
+      translateX(-50%)
+      translateY(10px);
+  }
+}
+
+/* subtle glow around cards */
+tbody tr:hover {
+  box-shadow:
+    0 24px 56px rgba(0,0,0,0.6),
+    0 0 45px rgba(255,60,75,0.16),
+    0 0 0 0.5px rgba(255,80,90,0.14) inset;
+}
+
+/* ===== SMALL ICONS ===== */
+
+/* music icon near artist */
+td:nth-child(2)::after {
+  content: '♫';
+
+  margin-left: auto;
+
+  color: rgba(255,80,90,0.65);
+
+  font-size: 0.8rem;
+}
+
+/* icon for youtube link */
+td a::after {
+  content: ' ↗';
+}
+
+/* icon for delete */
+td button::before {
+  content: '✦';
+
+  margin-right: 0.35rem;
+
+  font-size: 0.65rem;
+}
+
+/* ===== CINEMATIC BACKGROUND EFFECTS ===== */
+
+/* animated ambient gradient movement */
+body {
+  background-size: 140% 140%;
+
+  animation: cinematicBackground 18s ease-in-out infinite alternate;
+}
+
+@keyframes cinematicBackground {
+  0% {
+    background-position:
+      0% 0%,
+      100% 100%,
+      50% 100%,
+      50% 0%;
+  }
+
+  100% {
+    background-position:
+      8% 4%,
+      92% 96%,
+      46% 94%,
+      54% 2%;
+  }
+}
+
+/* floating glow orbs */
+body::before {
+  filter:
+    drop-shadow(0 0 30px rgba(255,50,60,0.35));
+
+  animation:
+    brandPulse 4s ease-in-out infinite alternate,
+    logoFloat 8s ease-in-out infinite alternate;
+}
+
+@keyframes logoFloat {
+  from {
+    transform:
+      translateX(-50%)
+      translateY(0px);
+  }
+
+  to {
+    transform:
+      translateX(-50%)
+      translateY(8px);
+  }
+}
+
+/* subtle animated light particles */
+body::selection {
+  background: rgba(255,50,60,0.2);
+}
+
+body::after {
+  animation:
+    floatingText 9s ease-in-out infinite alternate;
+}
+
+@keyframes floatingText {
+  from {
+    transform:
+      translateX(-50%)
+      translateY(0px);
+      opacity: 0.45;
+  }
+
+  to {
+    transform:
+      translateX(-50%)
+      translateY(6px);
+      opacity: 0.75;
+  }
+}
+
+/* cinematic noise layer */
+body > table::after {
+  content: '';
+
+  position: fixed;
+
+  inset: 0;
+
+  background-image:
+    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+
+  background-size: 4px 4px;
+
+  opacity: 0.08;
+
+  pointer-events: none;
+
+  mix-blend-mode: soft-light;
+
+  animation: noiseMove 0.35s infinite linear;
+}
+
+@keyframes noiseMove {
+  from {
+    transform: translate(0,0);
+  }
+
+  to {
+    transform: translate(-2px,2px);
+  }
+}
+
+/* extra glow on hover */
+tbody tr:hover {
+  transform:
+    translateY(-4px)
+    scale(1.01);
+}
+
+
+/* ===== FAST VISIBLE MOVING BLUR EFFECT ===== */
+
+body {
+  overflow: hidden;
+}
+
+/* RED GLOW */
+body::before {
+  content: '';
+
+  position: fixed;
+
+  width: 900px;
+  height: 900px;
+
+  top: -250px;
+  left: -250px;
+
+  background:
+    radial-gradient(circle,
+      rgba(255,40,60,0.55) 0%,
+      rgba(255,40,60,0.22) 28%,
+      transparent 68%
+    );
+
+  filter: blur(110px);
+
+  animation: moveRedBlob 6s ease-in-out infinite alternate;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* PURPLE GLOW */
+body::after {
+  content: '';
+
+  position: fixed;
+
+  width: 850px;
+  height: 850px;
+
+  bottom: -240px;
+  right: -240px;
+
+  background:
+    radial-gradient(circle,
+      rgba(120,60,255,0.48) 0%,
+      rgba(120,60,255,0.20) 30%,
+      transparent 70%
+    );
+
+  filter: blur(110px);
+
+  animation: movePurpleBlob 5s ease-in-out infinite alternate;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* EXTRA CENTER LIGHT */
+table::before {
+  content: '';
+
+  position: fixed;
+
+  width: 650px;
+  height: 650px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(circle,
+      rgba(255,255,255,0.12) 0%,
+      rgba(255,255,255,0.04) 35%,
+      transparent 75%
+    );
+
+  filter: blur(120px);
+
+  animation: moveCenterBlob 4s ease-in-out infinite alternate;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* FAST RED MOTION */
+@keyframes moveRedBlob {
+  0% {
+    transform:
+      translate(0px, 0px)
+      scale(1);
+  }
+
+  100% {
+    transform:
+      translate(320px, 180px)
+      scale(1.45);
+  }
+}
+
+/* FAST PURPLE MOTION */
+@keyframes movePurpleBlob {
+  0% {
+    transform:
+      translate(0px, 0px)
+      scale(1);
+  }
+
+  100% {
+    transform:
+      translate(-280px, -180px)
+      scale(1.38);
+  }
+}
+
+/* CENTER FLOAT */
+@keyframes moveCenterBlob {
+  0% {
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+  100% {
+    transform:
+      translate(-40%, -58%)
+      scale(1.42);
+  }
+}
+
+/* KEEP UI ABOVE EFFECTS */
+body > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ==================================================
+   FINAL FIX - Page Position + Website Title
+   YouTube Duration Validator
+================================================== */
+
+/* Move the whole page higher */
+body {
+  padding-top: 5.2rem !important;
+  padding-bottom: 4rem !important;
+  gap: 2rem !important;
+
+  /* Important: allows scrolling if there are many videos */
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+/* Keep form above the background effects */
+form {
+  position: relative;
+  margin-top: 4.2rem !important;
+}
+
+/* Main website title */
+form::before {
+  content: 'YouTube Duration Validator';
+
+  position: absolute;
+  top: -4.9rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: 95vw;
+
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  font-weight: 800;
+
+  letter-spacing: -0.04em;
+  line-height: 1;
+
+  color: #ffffff;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #ff7585 35%,
+      #ff3045 70%,
+      #ffffff 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 0 35px rgba(255, 50, 70, 0.35),
+    0 0 70px rgba(255, 50, 70, 0.18);
+
+  z-index: 10;
+}
+
+/* Small subtitle under the title */
+form::after {
+  content: 'Validate YouTube song duration with style';
+
+  position: absolute;
+  top: -2.05rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: 90vw;
+
+  padding: 0.45rem 1rem;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  color: rgba(255, 255, 255, 0.58);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 0 24px rgba(255, 50, 70, 0.12),
+    0 8px 25px rgba(0, 0, 0, 0.35);
+
+  z-index: 10;
+}
+
+/* Move cards/table closer to the form */
+table {
+  margin-top: -0.4rem !important;
+}
+
+/* Cleaner paragraph/status position */
+p {
+  margin-top: -0.4rem !important;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  body {
+    padding-top: 4.5rem !important;
+    gap: 1.5rem !important;
+  }
+
+  form {
+    margin-top: 4rem !important;
+  }
+
+  form::before {
+    top: -4.5rem;
+    font-size: 2rem;
+    width: 90vw;
+  }
+
+  form::after {
+    top: -2rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+}
+/* ==================================================
+   FINAL TITLE SPACING FIX
+   Adds clean space between title and form
+================================================== */
+
+body {
+  padding-top: 2.8rem !important;
+  gap: 1.8rem !important;
+}
+
+form {
+  margin-top: 8.5rem !important;
+}
+
+/* Main title position */
+form::before {
+  top: -7.2rem !important;
+
+  font-size: clamp(2.6rem, 6vw, 5rem) !important;
+  line-height: 1 !important;
+
+  width: 100vw !important;
+  text-align: center !important;
+
+  white-space: nowrap;
+}
+
+/* Subtitle position */
+form::after {
+  top: -2.8rem !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  body {
+    padding-top: 2rem !important;
+  }
+
+  form {
+    margin-top: 7.5rem !important;
+  }
+
+  form::before {
+    top: -6.6rem !important;
+    font-size: 2.35rem !important;
+    white-space: normal !important;
+  }
+
+  form::after {
+    top: -2.7rem !important;
+  }
+}

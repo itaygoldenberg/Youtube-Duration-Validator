@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+
+
+
+    <form>
+
+
+<input type="text" id="nameOfSong" placeholder="Enter Name Of Song" required>
+<input type="text" id="artist" placeholder="Enter Artist Name" required >
+<input type="url" id="urlOfSong" placeholder="Enter Url Of Song" required>
+
+<input 
+type="text" 
+id="lengthOfSong" 
+placeholder="Enter length Of Song (MM:SS)" 
+required 
+maxlength="5"
+oninput="formatSongTime(this)">
+
+
+<button type="submit" onclick="addingSong()">Adding Song</button>
+
+
+    </form>
+
+    <table id="tableOfSong">
+<thead>
+<tr>
+
+<th>Name Of Song</th>
+<th>Artist</th>
+<th>Song Length</th>
+<th>Youtube Url</th>
+<th>Remove</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="tableOfSongs"> </tbody>
+
+    </table>
+
+<p id="countDisplayOfSongs"></p>
+<p id="lengthOfAllSongs"></p>
+
+</body>
+</html>
